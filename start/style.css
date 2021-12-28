@@ -1,0 +1,11 @@
+.hide{
+    display : none;
+}
+
+.show{
+    display : block;
+}
+::placeholder{
+    width : 100%;
+    font-style :inherit;
+}
