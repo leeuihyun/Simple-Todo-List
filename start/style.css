@@ -16,7 +16,10 @@ html{
 #first{
     text-align : center;
 }
-
+#loginButton{
+    background:transparent;
+    color:white;
+}
 #realmain{
     width : 500px;
     display : flex;
@@ -24,7 +27,7 @@ html{
     align-items: center;
     flex-direction: column;
     margin:auto;
-    
+        
 }
 #intro{
     display : flex;
@@ -35,16 +38,21 @@ html{
     margin:auto;
     border-radius: 5%;
     border:5px double black;   
+
 }
 #secondMain{
     width:500px;
     display:flex;
-    justify-content:center;
+    justify-content: center;
     align-items:center;
     flex-direction: column;
     margin : auto;
     border-radius:5%;
     border:5px double black;
+    flex-wrap:wrap;
+}
+#twoContainer{
+    align-self : baseline;
 }
 .clock{
     width : 200px;
@@ -72,7 +80,15 @@ input[type="text"]{
 button{
     background-color: transparent;
 }
+
+
 ul{
-    width : 200px;
+    width:400px;
     list-style:none;
+}
+
+ul li{
+    border-bottom : 2px solid black;
+    background:rgba(255,255,255,0.5);
+    margin:3px;
 }
