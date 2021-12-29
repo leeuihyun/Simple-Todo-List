@@ -15,7 +15,11 @@ let array = [];
 
 function delButtonListener(event){
     event.preventDefault();
-    //만들어야함.
+    const btn = event.target;
+    const li = btn.parentNode;
+    todoUl.removeChild(li);
+    array = array.filter((item)=>item.id!==Number(li.id));
+    saveTodoData();
 }
 
 function loadYourName(){
@@ -44,7 +48,7 @@ function writeTodo(value){
     const btn = document.createElement('button');
     btn.addEventListener("click", delButtonListener);
     const span = document.createElement('span');
-    span.innerText = `${value.text}`;
+    span.innerText = ` ${value.text}`;
     btn.innerText = `❌`;
     li.appendChild(btn);
     li.appendChild(span);

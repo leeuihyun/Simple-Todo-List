@@ -1,11 +1,78 @@
+
+html{
+    height:100%;
+    background-image : url("1.png");
+    background-size : auto;
+    background-repeat: no-repeat;
+    font-family : Arial,sans-serif;
+    color:white;
+    display:flex;
+    align-items: center;
+    flex-direction:column;
+    justify-content:center;
+    text-shadow : 2px 2px 2px black;
+}
+
+#first{
+    text-align : center;
+}
+
+#realmain{
+    width : 500px;
+    display : flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin:auto;
+    
+}
+#intro{
+    display : flex;
+    width : 500px;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin:auto;
+    border-radius: 5%;
+    border:5px double black;   
+}
+#secondMain{
+    width:500px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-direction: column;
+    margin : auto;
+    border-radius:5%;
+    border:5px double black;
+}
+.clock{
+    width : 200px;
+    text-align :center;
+    height : 60px;
+    
+}
 .hide{
     display : none;
 }
-
+p{
+    color:white;
+}
+input[type="text"]{
+    height: 30px;
+    outline: 0;
+    border: none;
+    font-size: 1.2em;
+    background: #fff;
+    color: #2f4f4f;
+  }
 .show{
     display : block;
 }
-::placeholder{
-    width : 100%;
-    font-style :inherit;
+button{
+    background-color: transparent;
+}
+ul{
+    width : 200px;
+    list-style:none;
 }
