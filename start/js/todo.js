@@ -22,6 +22,19 @@ function delButtonListener(event){
     saveTodoData();
 }
 
+function checkListener(event){
+    const cb = event.target;
+    const li = cb.parentNode;
+    li.checked = !li.checked;
+    for(var i = 0;i<array.length;i++){
+        if(array[i].id==li.id){
+            console.log(array[i].id);
+            array[i].checked = li.checked;
+        }
+    }
+    saveTodoData();
+}
+
 function loadYourName(){
     greet.innerText = `${username}'s Todo-List`;    
 }
@@ -36,6 +49,7 @@ function submitListener(event){
     todoInput.value = "";
     const obj = {
         text : value,
+        checked : false,
         id : Date.now()
     };
     array.push(obj);
@@ -46,11 +60,18 @@ function submitListener(event){
 function writeTodo(value){
     const li = document.createElement('li');
     const btn = document.createElement('button');
+    const cb = document.createElement('input');
+    cb.setAttribute("type", "checkbox");
+    if(value.checked===true){
+        cb.checked = true;
+    }
+    cb.addEventListener("change", checkListener);
     btn.addEventListener("click", delButtonListener);
     const span = document.createElement('span');
     span.innerText = ` ${value.text}`;
     btn.innerText = `❌`;
     li.appendChild(btn);
+    li.appendChild(cb);
     li.appendChild(span);
     li.id = value.id;
     todoUl.appendChild(li);
