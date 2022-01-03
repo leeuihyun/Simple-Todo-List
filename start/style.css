@@ -1,0 +1,111 @@
+body{
+    height : 100%;
+    display : grid;
+    background-image : url("1.png");
+    background-size : auto;
+    background-repeat : no-repeat;
+    font-family: Arial,sans-serif;
+    color : white;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows : 1fr 1fr 1fr;
+    gap : 80px;
+    grid-template-areas:
+    "header header header"
+    " nav  section aside"
+    "footer footer footer";
+}
+
+#first{
+    text-align : center;
+}
+
+#loginButton{
+    background:transparent;
+    color:white;
+}
+#realmain{
+    grid-area : section;
+    display : flex;
+    width : 500px;
+    
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin:auto;
+    text-shadow: 2px 2px 2px black;
+    background-color: black;
+}
+#intro{
+    display : flex;
+    width : 500px;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin:auto;
+    border-radius: 5%;
+    border:5px double black;   
+
+}
+#secondMain{
+    width:500px;
+    height : 100%;
+    display:flex;
+    justify-content: center;
+    align-items:center;
+    flex-direction: column;
+    margin : auto;
+    border-radius:5%;
+    border:5px double black;
+    text-shadow: 2px 2px 2px black;
+}
+#twoContainer{
+    align-self : baseline;
+}
+#nextTo{
+    grid-area : aside;
+    background-color: white;
+    color : black;
+    width : 300px;
+    height: 200px;
+}
+.clock{
+    width : 200px;
+    text-align :center;
+    height : 60px;
+    
+}
+.hide{
+    display : none;
+}
+p{
+    color:white;
+}
+input[type="text"]{
+    height: 30px;
+    outline: 0;
+    border: none;
+    font-size: 1.2em;
+    background: #fff;
+    color: #2f4f4f;
+  }
+.show{
+    display : block;
+}
+button{
+    background-color: transparent;
+}
+
+
+ul{
+    width:400px;
+    list-style:none;
+}
+
+ul li{
+    border-bottom : 2px solid black;
+    background:rgba(255,255,255,0.5);
+    margin:3px;
+}
+#checklistForm{
+
+}
