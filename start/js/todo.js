@@ -26,6 +26,7 @@ function checkListener(event){
     const cb = event.target;
     const li = cb.parentNode;
     li.checked = !li.checked;
+    
     for(var i = 0;i<array.length;i++){
         if(array[i].id==li.id){
             console.log(array[i].id);
@@ -62,10 +63,8 @@ function writeTodo(value){
     const btn = document.createElement('button');
     const cb = document.createElement('input');
     cb.setAttribute("type", "checkbox");
-    if(value.checked===true){
-        cb.checked = true;
-    }
-    cb.addEventListener("change", checkListener);
+    cb.checked = value.checked;
+    cb.addEventListener("click", checkListener);
     btn.addEventListener("click", delButtonListener);
     const span = document.createElement('span');
     span.innerText = ` ${value.text}`;
