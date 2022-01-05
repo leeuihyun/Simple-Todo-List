@@ -9,9 +9,13 @@ const twoContainer = document.querySelector('#twoContainer');
 const todoForm = twoContainer.querySelector('#todoForm');
 const todoUl = todoForm.querySelector('ul');
 
+const checkOne = document.querySelector('#checkOne');
+const checkClear = document.querySelector('#checkClear');
 const TODOS = "todos";
+const CHECK = "check";
 
 let array = [];
+let checkArray = [];
 
 function delButtonListener(event){
     event.preventDefault();
@@ -22,17 +26,26 @@ function delButtonListener(event){
     saveTodoData();
 }
 
+function checkClearListener(event){
+    event.preventDefault();
+    checkArray = new Array();
+    saveTodoData();
+    window.location.reload();
+}
+
 function checkListener(event){
+    event.preventDefault();
     const cb = event.target;
     const li = cb.parentNode;
-    li.checked = !li.checked;
-    
-    for(var i = 0;i<array.length;i++){
-        if(array[i].id==li.id){
-            console.log(array[i].id);
-            array[i].checked = li.checked;
-        }
+    const txt = li.textContent;
+    const obj = {
+        text : txt,
+        id : li.id,
     }
+    checkArray.push(obj);
+    todoUl.removeChild(li);
+    array = array.filter((item)=>item.id!==Number(li.id));
+    writeCheck(obj);
     saveTodoData();
 }
 
@@ -42,6 +55,7 @@ function loadYourName(){
 
 function saveTodoData(){
     localStorage.setItem(TODOS, JSON.stringify(array));
+    localStorage.setItem(CHECK, JSON.stringify(checkArray));
 }
 
 function submitListener(event){
@@ -63,7 +77,6 @@ function writeTodo(value){
     const btn = document.createElement('button');
     const cb = document.createElement('input');
     cb.setAttribute("type", "checkbox");
-    cb.checked = value.checked;
     cb.addEventListener("click", checkListener);
     btn.addEventListener("click", delButtonListener);
     const span = document.createElement('span');
@@ -75,13 +88,26 @@ function writeTodo(value){
     li.id = value.id;
     todoUl.appendChild(li);
 }
-
+function writeCheck(value){
+    const li = document.createElement('li');
+    const span = document.createElement('span');
+    span.innerText = `${value.text}`;
+    li.appendChild(span);
+    li.id = value.id;
+    checkOne.appendChild(li);
+}
 function judge(){
     const todoValue = localStorage.getItem(TODOS);
+    const checkValue = localStorage.getItem(CHECK);
     if(todoValue!==null){
         const parseTodos = JSON.parse(todoValue);
         array = parseTodos;
         parseTodos.forEach(writeTodo);
+    }
+    if(checkValue!==null){
+        const parseCheck = JSON.parse(checkValue);
+        checkArray = parseCheck;
+        parseCheck.forEach(writeCheck);
     }
 }
 
@@ -89,6 +115,7 @@ function init(){
     judge();
     loadYourName();
     inputForm.addEventListener("submit", submitListener);
+    checkClear.addEventListener("click", checkClearListener);
 }
 
 init();
